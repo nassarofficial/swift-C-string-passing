@@ -141,6 +141,6 @@ int main(int argc, char *argv[])
 #undef printf
 #endif
     printf("tReturnString at the end:\n>%s<\n", tReturnString);
-    tFreeMemory ()
+    tFreeMemory ();
     return OK;
 }
