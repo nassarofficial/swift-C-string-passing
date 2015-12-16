@@ -119,34 +119,34 @@ int prf(char *fmt, ...)
 #endif
 
 // For testing with C compiler. Rename when used in Xcode project e.g. to mymain
-char* tmain(long argc, char *argv[])
-{
-    int i;
-    sizeOfReturnBuffer = INITIAL_SIZE_OF_RETURNBUFFER*sizeof(char);
-    if ((tReturnString = malloc(sizeOfReturnBuffer)) == 0) {
-        return "Sorry we are out of memory. Please close other apps and try again!";
-        //return ENOMEM;
-    }
-    tReturnString[0] = 0;
-    curPosOutBuffer = 0;
-
-    for (i = 0; i < argc; i++) printf("%s ", argv[i]);
-    tprntNewLine();
-
-    printf("%s", "ABC\t");
-    printf("%d", 12);
-    tprntNewLine(); // enough space for that ;-)
-    fputs("DEF\t", stdout);
-    printf("%d", 34);
-    tprntNewLine(); // realloc necessary ...
-    printf("%s", "xxxxxxxxx 80 chars are way more than the current buffer "
-	         "could handle! xxxxxxxxxx\t");
-    printf("%d", 56);
-    tprntNewLine(); // again realloc (test: too small INCR_SIZE_OF_RETURNBUFFER)
-
-#ifdef COLLECT_STDOUT_IN_BUFFER
-#undef printf  //undo rename to view results
-#endif
-    //printf("tReturnString at the end:\n>%s<\n", tReturnString);
-    return tReturnString;
-}
+//char* termain(long argc, char *argv[])
+//{
+//    int i;
+//    sizeOfReturnBuffer = INITIAL_SIZE_OF_RETURNBUFFER*sizeof(char);
+//    if ((tReturnString = malloc(sizeOfReturnBuffer)) == 0) {
+//        return "Sorry we are out of memory. Please close other apps and try again!";
+//        //return ENOMEM;
+//    }
+//    tReturnString[0] = 0;
+//    curPosOutBuffer = 0;
+//
+//    for (i = 0; i < argc; i++) printf("%s ", argv[i]);
+//    tprntNewLine();
+//
+//    printf("%s", "ABC\t");
+//    printf("%d", 12);
+//    tprntNewLine(); // enough space for that ;-)
+//    fputs("DEF\t", stdout);
+//    printf("%d", 34);
+//    tprntNewLine(); // realloc necessary ...
+//    printf("%s", "xxxxxxxxx 80 chars are way more than the current buffer "
+//	         "could handle! xxxxxxxxxx\t");
+//    printf("%d", 56);
+//    tprntNewLine(); // again realloc (test: too small INCR_SIZE_OF_RETURNBUFFER)
+//
+//#ifdef COLLECT_STDOUT_IN_BUFFER
+//#undef printf  //undo rename to view results
+//#endif
+//    //printf("tReturnString at the end:\n>%s<\n", tReturnString);
+//    return tReturnString;
+//}

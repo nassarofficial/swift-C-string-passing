@@ -23,14 +23,16 @@ class tViewController: UIViewController {
         if let argv = argvTextInput.text {
             myArgs=CStringArray(argv.characters.split{$0 == " "}.map(String.init))
         }
-        
-        let returnedString = tmain(myArgs.numberOfElements, &myArgs.pointers[0])
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
 
+        let returnedString = mymain(self.myArgs.numberOfElements, &self.myArgs.pointers[0])
+        
         if let tReturns = String.fromCString(returnedString) {
-            displayReturnStringTextView.text = tReturns
+            self.displayReturnStringTextView.text = tReturns
         }
 
         tFreeMemory()
+        })
     }
 
 }
